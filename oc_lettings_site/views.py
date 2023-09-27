@@ -11,4 +11,13 @@ from django.shortcuts import render
 
 
 def index(request):
+    """
+    Renders the index page.
+
+    Args:
+        request: HttpRequest object
+
+    Returns:
+        HttpResponse object with the rendered index.html template.
+    """
     return render(request, 'index.html')

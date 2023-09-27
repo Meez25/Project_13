@@ -8,6 +8,16 @@ from profiles.models import Profile
 
 
 def index(request):
+    """
+    Fetches a list of all profile objects and renders them on the index page.
+
+    Args:
+        request: HttpRequest object
+
+    Returns:
+        HttpResponse object with rendered HTML template and profiles list in
+        the context.
+    """
     profiles_list = Profile.objects.all()
     context = {'profiles_list': profiles_list}
     return render(request, 'profiles/index.html', context)
@@ -18,6 +28,18 @@ def index(request):
 
 
 def profile(request, username):
+    """
+    Fetches the profile associated with a specific username and renders it on
+    the profile page.
+
+    Args:
+        request: HttpRequest object
+        username: The username of the profile to be displayed
+
+    Returns:
+        HttpResponse object with rendered HTML template and specific profile
+        data in the context.
+    """
     profile = Profile.objects.get(user__username=username)
     context = {'profile': profile}
     return render(request, 'profiles/profile.html', context)

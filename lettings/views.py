@@ -6,6 +6,12 @@ from lettings.models import Letting
 # luctus et ultrices posuere cubilia curae; Cras eget scelerisque
 
 def index(request):
+    """
+    View function to render the index page.
+
+    Retrieves a list of all available lettings and passes it to the template
+    for rendering.
+    """
     lettings_list = Letting.objects.all()
     context = {'lettings_list': lettings_list}
     return render(request, 'lettings/index.html', context)
@@ -25,6 +31,12 @@ def index(request):
 # lacinia augue pulvinar sit amet.
 
 def letting(request, letting_id):
+    """
+    View function to render details for a specific letting.
+
+    Retrieves a letting object based on the provided letting_id and passes
+    it to the template for rendering.
+    """
     letting = Letting.objects.get(id=letting_id)
     context = {
         'title': letting.title,
