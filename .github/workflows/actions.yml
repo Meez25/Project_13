@@ -34,8 +34,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: |
-        docker build . --file Dockerfile --tag meez25/lettings:${{ github.sha }} \
+        docker build . --file Dockerfile --tag your_username/lettings:${{ github.sha }} \
         --build-arg SENTRY_URL=${{ secrets.SENTRY_URL }} --build-arg SECRET_KEY=${{ secrets.SECRET_KEY }}
+        
     - name: Push Docker image
       run: |
         echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
