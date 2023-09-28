@@ -1,6 +1,14 @@
 # Utilisez une image Python comme image de base
 FROM python:3.11.3
 
+# Define arguments that can be passed at build time
+ARG SENTRY_URL
+ARG SECRET_KEY
+
+# Set environment variables
+ENV SENTRY_URL=$SENTRY_URL
+ENV SECRET_KEY=$SECRET_KEY
+
 # Définissez les variables d'environnement pour éviter les erreurs de déploiement
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
