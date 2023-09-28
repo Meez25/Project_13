@@ -3,6 +3,9 @@ on: [push]
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+      SENTRY_URL: ${{ secrets.SENTRY_URL }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
