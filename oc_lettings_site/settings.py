@@ -31,7 +31,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["project-13.onrender.com",]
+ALLOWED_HOSTS = ["project-13.onrender.com", ]
 
 
 # Application definition
