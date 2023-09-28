@@ -23,3 +23,18 @@ jobs:
 
       - name: Run Tests
         run: pytest
+
+  containerize:
+    runs-on: ubuntu-latest
+    env:
+      SENTRY_URL: ${{ secrets.SENTRY_URL }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag meez25/lettings:${{ github.sha }}
+    - name: Push Docker image
+      run: |
+        echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+        docker push meez25/lettings:${{ github.sha }}
