@@ -55,4 +55,4 @@ jobs:
                -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
                -X POST \
                -d '{"imgURL": "docker.io/meez25/lettings:${{ github.sha }}"}' \
-               https://api.render.com/deploy/srv-ckaof8sldnhc73ejjldg?key=0RKEX5STG9E
+               ${{ secrets.DEPLOY_HOOK }}
