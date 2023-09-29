@@ -53,5 +53,5 @@ jobs:
       run: |
           curl -H "Content-Type: application/json" \
                -X POST \
-               -d '{"imgURL": "docker.io/meez25/lettings@'${{ github.sha }}'"}' \
+               -d '{"imgURL": "docker.io/meez25/lettings@${{ github.sha }}"}' \
                https://api.render.com/deploy/srv-ckaof8sldnhc73ejjldg?key=${{ secrets.RENDER_API_KEY }}
