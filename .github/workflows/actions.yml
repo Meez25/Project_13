@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Tests with Coverage
         run: |
-          pytest --cov=my_project --cov-fail-under=80
+          pytest --cov=my_project --cov-fail-under=80 --cov-config=.coveragerc
 
   containerize:
     if: github.ref == 'refs/heads/master'
