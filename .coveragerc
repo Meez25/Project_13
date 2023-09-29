@@ -1,9 +1,21 @@
 [run]
 omit = 
-    */tests.py
+    */tests/*.*
+    tests.py
+    */migrations/*.*
+    */admin.py
+    */apps.py
+    */wgsi.py
+    manage.py
 
 [report]
-# Omit files from being included in the report here
 omit =
-    */tests.py
+    */tests/*.*
+    tests.py
+    */migrations/*.*
+    */admin.py
+    */apps.py
+    */wgsi.py
+    manage.py
+
 
