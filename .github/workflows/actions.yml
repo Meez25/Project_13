@@ -24,6 +24,10 @@ jobs:
       - name: Run Tests
         run: pytest
 
+      - name: Run Tests with Coverage
+        run: |
+          pytest --cov=my_project --cov-fail-under=80
+
   containerize:
     if: github.ref == 'refs/heads/master'
     needs: build-and-test
