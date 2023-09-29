@@ -39,3 +39,20 @@ jobs:
       run: |
         echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
         docker push meez25/lettings:${{ github.sha }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build-and-test, containerize]
+    env:
+      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Deploy to Render
+      run: |
+        curl -H "Authorization: Bearer ${RENDER_API_KEY}" \
+             -H "Content-Type: application/json" \
+             -X POST \
+             -d '{"webhook": "'${DEPLOY_HOOK}'", "imgURL": "docker.io/meez25/lettings@${{ github.sha }}"}' \
+             https://api.render.com/webhooks
