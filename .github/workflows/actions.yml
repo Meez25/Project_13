@@ -49,15 +49,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Debug
-      run: |
-        echo 'About to run the following curl command:'
-        echo "curl -H \"Content-Type: application/json\" -X POST -d '{\"imgURL\": \"docker.io/meez25/lettings@${{ github.sha }}\"}' https://api.render.com/deploy/srv-ckaof8sldnhc73ejjldg?key=${{ secrets.RENDER_API_KEY }}"
-
     - name: Deploy to Render
       run: |
           curl -H "Content-Type: application/json" \
-               -H "Authorization: Bearer ${RENDER_API_KEY}" \
+               -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
                -X POST \
                -d '{"imgURL": "docker.io/meez25/lettings:${{ github.sha }}"}' \
-               https://api.render.com/deploy/srv-ckaof8sldnhc73ejjldg?key=${{ secrets.RENDER_API_KEY }}
+               https://api.render.com/deploy/srv-ckaof8sldnhc73ejjldg?key=0RKEX5STG9E
