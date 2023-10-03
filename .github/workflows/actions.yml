@@ -57,8 +57,7 @@ jobs:
 
     - name: Deploy to Render
       run: |
-          curl -H "Content-Type: application/json" \
-               -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
-               -X POST \
-               -d '{"imgURL": "docker.io/meez25/lettings:${{ github.sha }}"}' \
-               ${{ secrets.DEPLOY_HOOK }}
+          curl -G \
+           -d "key=${{ secrets.RENDER_API_KEY }}" \
+           -d "imgURL=docker.io/meez25/lettings:${{ github.sha }}" \
+           ${{ secrets.DEPLOY_HOOK }}
