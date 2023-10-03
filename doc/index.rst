@@ -9,6 +9,7 @@ Welcome to Lettings's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
    description.rst
    installation.rst
    demarrage.rst
