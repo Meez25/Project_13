@@ -23,6 +23,4 @@ Bienvenue sur la documentation de Lettings !
 Indices and tables
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
