@@ -22,7 +22,7 @@ Déploiement Automatique via GitHub Actions
 Monitoring et Gestion
 ----------------------
 
-- Le suivi des erreurs et des performances se fait via des outils spécifiques (à préciser si applicable).
+- Le suivi des erreurs et des performances se fait via l'application Sentry.
 
 Rollback
 --------
