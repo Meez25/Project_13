@@ -9,14 +9,14 @@ Welcome to Lettings's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   description
-   installation
-   demarrage
-   techno
-   database
-   interface
-   guide
-   procedure
+   description.rst
+   installation.rst
+   demarrage.rst
+   techno.rst
+   database.rst
+   interface.rst
+   guide.rst
+   procedure.rst
 
 
 
