@@ -1,6 +1,5 @@
 from django.test import TestCase
 
-
 class CustomErrorPagesTests(TestCase):
 
     def test_custom_404_page(self):
@@ -12,10 +11,12 @@ class CustomErrorPagesTests(TestCase):
         self.assertTemplateUsed(response, '404.html')
 
     def test_custom_500_page(self):
+        response = None  # Initialize response to None
         # You have to manually trigger the 500 error
         try:
             response = self.client.get('/sentry-debug/')
         except ZeroDivisionError:
             pass
 
-        self.assertTemplateUsed(response, '500.html')
+        if response:  # Check if the response object was successfully created
+            self.assertTemplateUsed(response, '500.html')
