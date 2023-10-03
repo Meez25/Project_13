@@ -1,5 +1,6 @@
 from django.test import TestCase
 
+
 class CustomErrorPagesTests(TestCase):
 
     def test_custom_404_page(self):
