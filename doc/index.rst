@@ -3,12 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Lettings's documentation!
+Bienvenue sur la documentation de Lettings !
 ====================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
    description.rst
    installation.rst
