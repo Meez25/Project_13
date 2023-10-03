@@ -21,4 +21,3 @@ class CustomErrorPagesTests(TestCase):
             pass
 
         self.assertTemplateUsed(response, '500.html')
-
