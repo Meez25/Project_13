@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Bienvenue sur la documentation de Lettings !
-====================================
+============================================
 
 .. toctree::
    :maxdepth: 2
