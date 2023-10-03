@@ -9,6 +9,14 @@ Welcome to Lettings's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   descriptijn
+   installation
+   demarrage
+   techno
+   database
+   interface
+   guide
+   procedure
 
 
 
