@@ -75,3 +75,38 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+
+### Déploiement
+
+#### Vue d'ensemble de haut niveau
+
+Le processus de déploiement est automatisé via GitHub Actions, qui exécute diverses tâches pour construire, tester et déployer l'application. L'application est conteneurisée avec Docker, et l'image est poussée vers Docker Hub. Le pipeline exécute des contrôles de lint et des tests avant de passer à la construction et au push de l'image Docker.
+
+#### Configuration requise
+
+Pour activer le pipeline CI/CD, vous devez configurer quelques secrets GitHub pour stocker des informations sensibles telles que les identifiants Docker Hub et les clés secrètes de l'application. Voici les secrets nécessaires :
+
+- **DOCKER_HUB_USERNAME**: Votre nom d'utilisateur Docker Hub.
+- **DOCKER_HUB_PASSWORD**: Votre mot de passe Docker Hub.
+- **SECRET_KEY**: La clé secrète de votre application Django.
+- **SENTRY_URL**: L'URL Sentry pour le suivi des erreurs (facultatif).
+
+#### Étapes de déploiement
+
+Suivez ces étapes pour déployer l'application :
+
+1. **Configurer les Secrets GitHub**: Accédez à votre dépôt sur GitHub, cliquez sur `Paramètres` -> `Secrets` et ajoutez les secrets mentionnés dans la section "Configuration requise".
+  
+2. **Fusionner vers Master**: Tout code fusionné dans la branche master déclenchera le pipeline GitHub Actions.
+
+3. **Surveiller GitHub Actions**: Naviguez vers l'onglet `Actions` sur GitHub pour surveiller la progression des tâches.
+
+4. **Exécuter localement**: Après que l'image Docker est construite avec succès et poussée sur Docker Hub, vous pouvez la récupérer pour l'exécuter localement avec ces commandes (remplacez `GITHUB_SHA` par la valeur SHA réelle) :
+
+    ```bash
+    docker pull meez25/lettings:GITHUB_SHA
+    docker run -p 8000:8000 meez25/lettings:GITHUB_SHA
+    ```
+
+Votre successeur devrait être capable de suivre ces instructions pour déployer avec succès l'application sans aucun problème.
