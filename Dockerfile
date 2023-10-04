@@ -25,6 +25,7 @@ COPY . /app/
 
 # Exécutez la commande collectstatic pour copier les fichiers statiques.
 RUN python manage.py collectstatic --noinput
+RUN python manage.py migrate
 
 # Exposez le port sur lequel fonctionne votre application Django
 EXPOSE 8000
