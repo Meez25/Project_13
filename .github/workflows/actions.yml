@@ -42,16 +42,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag meez25/lettings:${{ github.sha }} --build-arg "SECRET_KEY=${{ secrets.SECRET_KEY }}" --build-arg "SENTRY_URL=${{ secrets.SENTRY_URL }}"
+      run: |
+        docker build . --file Dockerfile --tag meez25/lettings:${{ github.sha }} --build-arg "SECRET_KEY=${{ secrets.SECRET_KEY }}" --build-arg "SENTRY_URL=${{ secrets.SENTRY_URL }}"
+        docker tag meez25/lettings:${{ github.sha }} meez25/lettings:latest
 
     - name: Push Docker image
       run: |
         echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
         docker push meez25/lettings:${{ github.sha }}
+        docker push meez25/lettings:latest
 
     - name: Run locally with this command
       run: |
-        echo "To run locally, execute: docker pull meez25/lettings:$git_commit_hash && docker run -p 8000:8000 meez25/lettings:$git_commit_hash"
+        echo "To run locally, execute: docker pull meez25/lettings:${{ github.sha }} && docker run -p 8000:8000 meez25/lettings:${{ github.sha }}"
     
 
   deploy:
